@@ -1,0 +1,116 @@
+*{
+    direction: rtl;
+}
+body{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    background-color: gray;
+    
+}
+.container{
+    margin: 20px;
+    width: 145mm;
+    height: max-content;
+    min-height: 210mm;
+    background-color: white;
+    padding: 5px 40px ;
+}
+.title{
+    font-size: xx-large;
+     padding-bottom: 7px;
+     border-bottom: 2px solid black;
+     text-align: center;
+     font-weight: bold;
+}
+.about-check{
+    display: flex;
+    justify-content: space-between;
+    font-size: large;
+     padding-top: 5px;
+}
+.check-number{
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+}
+.check-number > div{
+    text-align: center;
+    padding: 5px;
+    border-radius: 5px;
+    width: 45%;
+    border: 1px solid black;
+}
+.check-date{
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+}
+
+.check-date > div:nth-child(2){
+    text-align: center;
+    padding: 5px;
+    border-radius: 5px;
+    width: 70%;
+    border: 1px solid black;
+
+}
+.check-date > div:nth-child(1){
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    
+}
+.check-date div > div:nth-child(1){
+    text-align: center;
+    padding: 5px;
+    border-radius: 5px;
+    width: 80%;
+    border: 1px solid black;
+}
+.check-date > div:nth-child(2),
+.check-number > div:nth-child(2){
+    font-weight: bold;
+ }
+ .client-info{
+     display: flex;
+     padding: 10px;
+     margin: 5px 0;
+     border: 1px solid black;
+     border-radius: 5px;
+ }
+ .client-info > div:nth-child(1){
+   margin:0 20px; 
+ }
+ .client-info > div:nth-child(2){
+     text-align: center;
+     font-weight: bold;
+ }
+ table{
+     width: 100%;  
+     border: 1px solid black;
+     border-collapse: collapse;
+}
+table td , th{
+    padding: 5px;
+    border: 1px solid black;
+
+}
+table:nth-of-type(1) th:nth-child(2){
+    width: 45%;
+}
+table:nth-of-type(1) th{
+    background-color: rgba(248, 248, 248, 0.893);
+}
+table:nth-of-type(1){
+    margin-bottom: 10px;
+}
+table:nth-of-type(2) th:nth-child(1){
+    width: 13.2%;
+} 
+table:nth-of-type(2) th:nth-child(2){
+    width: 62.4%;
+} 
+table:nth-of-type(2) td{
+    font-weight: bold;
+}
