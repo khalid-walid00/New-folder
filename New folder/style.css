@@ -114,3 +114,25 @@ table:nth-of-type(2) th:nth-child(2){
 table:nth-of-type(2) td{
     font-weight: bold;
 }
+@media print {
+    @page {
+        size: A5;
+        margin: 0;
+    }
+
+    body {
+        margin: 0;
+    }
+
+    .container {
+        margin: 0;
+        width: 100%; 
+        min-height: 100%; 
+        padding: 0;
+        border: 0;
+        background-color: white;
+        box-shadow: none;
+        font-size: 12px;
+        overflow: hidden;
+    }
+}

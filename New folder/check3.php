@@ -15,7 +15,36 @@ $array_item_qty = explode(",", $item_qty);
 $array_item_price = explode(",", $item_price);
 $arrayOfPriceOfOne= explode(",", $totalPriceForOne);
 
+//qrc
+// https://github.com/t0k4rt/phpqrcode
+// extension=gd
+// include('./phpqrcode-master/qrlib.php');
+// $data = '2';
+// $file = './qr-code.png';
+// QRcode::png($data, $file);
+
+
+//barcode
+// composer require picqer/php-barcode-generator
+// require 'vendor/autoload.php'; 
+// use Picqer\Barcode\BarcodeGeneratorHTML;
+// $generator = new BarcodeGeneratorHTML();
+// $clintName = !empty($_GET['Clint_Name']) ? $_GET['Clint_Name'] : '12345';
+// $receiptNo = !empty($_GET['receipt_no']) ? $_GET['receipt_no'] : '12345';
+// $barcode = $generator->getBarcode($receiptNo, $generator::TYPE_CODE_128);
+
+
+
+require 'vendor/autoload.php'; 
+
+use Picqer\Barcode\BarcodeGeneratorHTML;
+
+$generator = new BarcodeGeneratorHTML();
+$barcodeNum = !empty($_GET['receipt_no']) ? $_GET['receipt_no'] : '12345';
+$barcode = $generator->getBarcode($barcodeNum, $generator::TYPE_CODE_128);
+
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -27,9 +56,13 @@ $arrayOfPriceOfOne= explode(",", $totalPriceForOne);
 </head>
 <body>
 <div class="container">
+<div class="barcode">
+    <?php echo $barcode; ?>
+</div>
  <div class="title">
     وصل التسليم
- </div>
+ </div>  
+
  <div class="about-check">
     <div class="check-number">
         <div>وصل التسليم رقم </div>
@@ -63,8 +96,8 @@ $arrayOfPriceOfOne= explode(",", $totalPriceForOne);
         <tr>
             <td><?php echo $array_item_qty[$i]; ?></td>
             <td><?php echo $array_item_name[$i]; ?></td>
-            <td><?php echo number_format($array_item_price[$i] && $array_item_price[$i], 2); ?></td>
-            <td><?php echo number_format($arrayOfPriceOfOne[$i] &&$arrayOfPriceOfOne[$i], 2); ?></td>
+            <td><?php echo number_format((float) $array_item_price[$i], 2); ?></td>
+            <td><?php echo number_format((float)$arrayOfPriceOfOne[$i], 2); ?></td>
         </tr>
     <?php endfor; ?>
 <?php else : ?>
@@ -80,7 +113,7 @@ $arrayOfPriceOfOne= explode(",", $totalPriceForOne);
         <tr>
             <th>عدد المواد</th>
             <th>المجموع</th>
-            <td><?php echo number_format($totalAmount,2); ?></td>
+            <td><?php echo number_format((float)$totalAmount,2); ?></td>
         </tr>
     </thead>
     <tbody>
@@ -94,7 +127,7 @@ $arrayOfPriceOfOne= explode(",", $totalPriceForOne);
 </div>
 <script>
 
-    window.print();
+    // window.print();
 </script>
 </body>
 </html>
